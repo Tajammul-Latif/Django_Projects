@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Receipes
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="mb-3">
+        <h1>Add Receipe</h1>
+        <hr />
+      </div>
+      <div class="mb-3">
+        <label for="receipe_name" class="form-label">Receipe Name</label>
+        <input name="receipe_name" type="text" class="form-control" id="receipe_name" />
+      </div>
+      <div class="mb-3">
+        <label for="receipe_desc" class="form-label">Receipe Description</label>
+        <textarea name="receipe_desc" class="form-control" id="receipe_desc"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="receipe_image" class="form-label">Receipe Image</label>
+        <input name="receipe_image" type="file" class="form-control" id="receipe_image" />
+      </div>
+      <button type="submit" class="btn btn-success">Add Receipe</button>
+    </form>
+
+    <br /><br />
+    <div class="row mt-5">
+      <div class="col-6 mx-auto">
+        <form class="form-inline d-flex flex-column gap-3 shadow-lg p-3 border border-2">
+          <div class="mb-3">
+            <h1>Search Receipe</h1>
+            <hr />
+          </div>
+          <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-10 mx-auto">
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Receipe Name</th>
+              <th>Receipe Description</th>
+              <th>Receipe Image</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for receipe in receipes %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ receipe.receipe_name }}</td>
+                <td>{{ receipe.receipe_description }}</td>
+                <td>
+                  <img src="/media/{{ receipe.receipe_image }}" height="150" width="200" alt="" />
+                </td>
+
+                <td>
+                  <div class="d-flex gap-2">
+                    <a href="/delete_receipe/{{ receipe.id }}" class="btn btn-danger">Delete</a>
+                    <a href="/update_receipe/{{ receipe.id }}" class="btn btn-success">Update</a>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

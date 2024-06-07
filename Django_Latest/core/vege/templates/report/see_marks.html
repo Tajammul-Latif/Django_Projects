@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Students Data
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mx-auto">
+        <h3>Name: {{ student_name }}</h3>
+        <h4>Rank {{ current_rank }}</h4>
+        <h4>Total Marks: {{ total_marks.total_marks }}</h4>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Subject Name</th>
+              <th scope="col">Marks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for marks in queryset %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ marks.subject.subject_name }}</td>
+                <td>{{ marks.marks }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

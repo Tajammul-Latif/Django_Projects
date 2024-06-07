@@ -1,0 +1,15 @@
+<!-- emailapp/templates/emailapp/success.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+  Success
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="alert alert-success">
+      <strong>Success!</strong> The email has been sent.
+    </div>
+    <a href="{% url 'send-email-view' %}" class="btn btn-primary">Send Another Email</a>
+  </div>
+{% endblock %}
