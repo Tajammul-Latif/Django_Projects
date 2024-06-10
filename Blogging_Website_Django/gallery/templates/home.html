@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Blog Website
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1>Today's New Blogs</h1>
+    <div class="row">
+      {% for product in products %}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <a href="{% url 'product_detail' product.pk %}"><img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" class="card-img-top" /></a>
+            <div class="card-body">
+              <h5 class="card-title">{{ product.product_name }}</h5>
+              <p class="card-text">{{ product.short_description }}</p>
+              <a href="{% url 'update_product' product.pk %}">Edit</a>
+              <a href="{% url 'delete_product' product.pk %}">Delete</a> <br />
+              <small class="card-text">Created at: {{ product.product_created_at }}</small> <br />
+              <small class="card-text">Updated at: {{ product.product_updates_at }}</small>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

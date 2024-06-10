@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Delete Product
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="mb-3">
+        <h1>Delete Blog Post</h1>
+        <hr />
+      </div>
+      {% comment %} <div class="mb-3">
+        <label for="first_name" class="form-label">First name</label>
+        <input type="text" name="first_name" class="form-control" id="first_name" />
+      </div>
+      <div class="mb-3">
+        <label for="last_name" class="form-label">Last Name</label>
+        <input type="text" name="last_name" class="form-control" id="last_name" />
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" id="username" />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="password" />
+      </div>
+      <p>
+        Already have an acount? <a href="/login/" class="text-success text-decoration-none">Login</a>
+      </p> {% endcomment %}
+
+      <p>Are you sure you want to Delete {{ product.product_name }}</p>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+  </div>
+{% endblock %}
