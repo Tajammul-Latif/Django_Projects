@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel = "stylesheet" />
+    <title>Services</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+      
+            {% for n in serviceData  %}
+              <div class="col-lg-6 col-xl-6 mx-auto bg-dark text-white p-3 mb-2">
+                <span>{{n.service_icon}}</span>
+                <h4>{{n.service_title}}</h4>
+                <p>{{n.service_desc}}</p>
+              </div>
+            {% endfor %}
+
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+
+                    <li class="page-item"><a class="page-link" href="/services/?page=1">First</a></li>
+                    
+                    {% if serviceData.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="/services/?page={{serviceData.previous_page_number}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                        
+
+                    {% for i in totalPageList  %}
+
+                    <li class="page-item"><a class="page-link" href="/services/?page={{i}}">{{i}}</a></li>
+                        
+                    {% endfor %}
+
+                    
+                    {% if serviceData.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="/services/?page={{serviceData.next_page_number}}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    <li class="page-item"><a class="page-link" href="/services/?page={{last_page}}">Last</a></li>
+                </ul>
+              </nav>                    
+
+          </div>
+    </div>
+    
+</body>
+</html>
