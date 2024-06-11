@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  recAPTCHA Project
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h2>Contact Form</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
