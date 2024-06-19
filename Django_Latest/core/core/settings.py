@@ -46,7 +46,7 @@ EXTERNAL_APPS = [
     'accounts',
     'vege',
     'practice_of_uploading_and_showing_query',
-    'emailapp'
+    'emailapp',
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS

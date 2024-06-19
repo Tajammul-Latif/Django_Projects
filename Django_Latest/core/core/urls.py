@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from Home.views import *
 from vege.views import *
 from practice_of_uploading_and_showing_query.views import *
@@ -39,7 +39,7 @@ urlpatterns = [
     path('students/', get_students, name='get_students'),
     path('marks/<student_id>/', see_marks, name='see_marks'),
     path('send-email/', send_email_view, name='send-email-view'),
-    path('success/', email_sent, name='send_email')
+    path('success/', email_sent, name='send_email'),
 ]
 
 if settings.DEBUG:

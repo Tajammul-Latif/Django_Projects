@@ -16,4 +16,4 @@ class ReportCardAdmin(admin.ModelAdmin):
         subject_marks = SubjectMarks.objects.filter(student = obj.student)
         return subject_marks.aggregate(marks = Sum('marks'))
 
-admin.site.register(ReportCard, )
+admin.site.register(ReportCard)
