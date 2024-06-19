@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Todo Web-App
+{% endblock %}
+
+{% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-danger">
+        <strong>{{ message }}</strong>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <center class="row">
+    <h1><i>__TODO LIST__</i></h1>
+    <hr />
+  </center>
+
+  <div class="row">
+    <div class="col-md-8">
+      {% for i in list %}
+        <div class="card">
+          <center>
+            <b>{{ i.title }}</b>
+          </center>
+          <hr />
+          {{ i.date }}
+          <hr />
+          {{ i.details }}
+
+          <br /><br />
+          <form action="/del/{{ i.id }}" method="post" style="padding-right: 4%; padding-bottom: 3%;">
+            {% csrf_token %}
+            <button value="remove" type="submit" class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-trash"></span> Remove</button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+      <div class="submit_form">
+        <form action="" method="post">
+          {% csrf_token %}
+          {{ forms }}
+          <center>
+            <input type="submit" value="submit" class="btn btn-default" />
+          </center>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
