@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Receipes
+{% endblock %}
+
+{% block content %}
+  <div class="row mb-5">
+    <div class="col-md-6 mx-auto">
+      <form class="p-3 shadow-lg">
+        <div class="form-group mb-3">
+          <h3 for="search">Search Receipe</h3>
+          <input type="text" name="search" class="form-control" id="search" aria-describedby="search" placeholder="Search..." />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-md-10 mx-auto">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Receipe Name</th>
+            <th scope="col">Receipe Description</th>
+            <th scope="col">Receipe Image</th>
+            <th scope="col">Update/Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in receipes %}
+            <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td>{{ item.receipe_name }}</td>
+              <td>{{ item.receipe_description }}</td>
+              <td>
+                <img src="/media/{{ item.receipe_image }}" height="120" width="120" alt="receipe_image" />
+              </td>
+              <td>
+                <div class="d-flex gap-2">
+                  <a href="/delete-receipe/{{ item.id }}" class="btn btn-danger">Delete</a>
+                  <a href="/update-receipe/{{ item.id }}" class="btn btn-success">Update</a>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

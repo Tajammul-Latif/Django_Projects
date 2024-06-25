@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Receipes
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <form class="card shadow-lg p-3" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+          <h2>Add Receipe</h2>
+          <hr />
+        </div>
+        <div class="mb-3">
+          <label for="receipe_name" class="form-label">Receipe name</label>
+          <input type="text" name="receipe_name" class="form-control" id="receipe_name" aria-describedby="receipe_name" required />
+        </div>
+        <div class="mb-3">
+          <label for="receipe_description" class="form-label">Receipe Description</label>
+          <textarea name="receipe_description" class="form-control" rows="5" id="receipe_description" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="receipe_image" class="form-label">Receipe Image</label>
+          <input type="file" name="receipe_image" class="form-control" id="receipe_image" />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Receipe</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
